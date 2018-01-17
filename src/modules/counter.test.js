@@ -1,4 +1,4 @@
-import reducer, { increment, INCREMENT, INCREMENT_REQUESTED } from './counter.js'
+import reducer, { increment, incrementAsync, INCREMENT, INCREMENT_REQUESTED } from './counter.js'
 
 	const incrementRequestedAction = {
 		type: INCREMENT_REQUESTED
@@ -53,4 +53,16 @@ test('Increment sets isIncrementing to false', () => {
 	const newState = reducer(initialState, incrementAction)
 	
 	expect(newState.isIncrementing).toEqual(false)
+})
+
+it('Increment Async dispatches with INCREMENT_REQUESTED and then INCREMENT', () => {
+
+    const mockDispatch = jest.fn();
+  
+	const result = incrementAsync()
+	
+	return result(mockDispatch).then(() => {
+		expect(mockDispatch.mock.calls[0]).toEqual([incrementRequestedAction])
+		expect(mockDispatch.mock.calls[1]).toEqual([incrementAction])
+	  })
 })

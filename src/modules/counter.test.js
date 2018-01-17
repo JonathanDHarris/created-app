@@ -11,11 +11,7 @@ import reducer, { increment, INCREMENT, INCREMENT_REQUESTED } from './counter.js
 	
 test('Increment dispatches with INCREMENT_REQUESTED and then INCREMENT', () => {
 	const mockDispatch = jest.fn()
-	
 
-	
-
-	
 	const result = increment()
 	
 	result(mockDispatch)

@@ -9,7 +9,7 @@ import {
   decrementAsync
 } from '../../modules/counter'
 
-const Home = props => (
+export const Home = props => (
   <div>
     <h1>Home</h1>
     <p>Count: {props.count}</p>

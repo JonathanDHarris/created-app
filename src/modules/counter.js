@@ -3,6 +3,14 @@ export const INCREMENT = 'counter/INCREMENT'
 export const DECREMENT_REQUESTED = 'counter/DECREMENT_REQUESTED'
 export const DECREMENT = 'counter/DECREMENT'
 
+// Returns a promise that resolves after 3 seconds.
+// To simulate waiting on an API call.
+const promiseOnTimer = () => {
+   return new Promise((resolve) => { 
+       setTimeout(resolve, 3000)
+   });
+}
+
 const initialState = {
   count: 0,
   isIncrementing: false,
@@ -60,11 +68,12 @@ export const incrementAsync = () => {
       type: INCREMENT_REQUESTED
     })
 
-    return setTimeout(() => {
-      dispatch({
-        type: INCREMENT
-      })
-    }, 3000)
+    return promiseOnTimer()
+	 .then(() => {
+			dispatch({
+				type: INCREMENT
+			})
+		})
   }
 }
 
@@ -86,10 +95,11 @@ export const decrementAsync = () => {
       type: DECREMENT_REQUESTED
     })
 
-    return setTimeout(() => {
+    return promiseOnTimer()
+	.then(() => {
       dispatch({
         type: DECREMENT
       })
-    }, 3000)
+    })
   }
 }

@@ -21,13 +21,3 @@ ReactDOM.render(
   </Provider>,
   target
 )
-
-
-/*
-ReactDOM.render(
-	<ConnectedRouter history={history}>
-	<div>hello</div>
-	</ConnectedRouter>,
-	target
-)
-*/

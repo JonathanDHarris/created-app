@@ -1,11 +1,9 @@
 import reducer, { increment, incrementAsync, INCREMENT, INCREMENT_REQUESTED } from './counter.js'
 
 jest.mock('../api', () => {
-	return {
-		promiseOnTimer: jest.fn(() => {
-			return new Promise((resolve) => { 
-				setTimeout(resolve, 1)
-			})
+	const mockPromiseOnATimer = () => {
+		return new Promise((resolve) => { 
+			setTimeout(resolve, 1)
 		})
 	}
 	return {

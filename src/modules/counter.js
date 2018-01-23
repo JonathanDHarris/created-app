@@ -1,15 +1,9 @@
+import api from '../api'
+
 export const INCREMENT_REQUESTED = 'counter/INCREMENT_REQUESTED'
 export const INCREMENT = 'counter/INCREMENT'
 export const DECREMENT_REQUESTED = 'counter/DECREMENT_REQUESTED'
 export const DECREMENT = 'counter/DECREMENT'
-
-// Returns a promise that resolves after 3 seconds.
-// To simulate waiting on an API call.
-const promiseOnTimer = () => {
-   return new Promise((resolve) => { 
-       setTimeout(resolve, 3000)
-   });
-}
 
 const initialState = {
   count: 0,
@@ -68,7 +62,7 @@ export const incrementAsync = () => {
       type: INCREMENT_REQUESTED
     })
 
-    return promiseOnTimer()
+    return api.promiseOnTimer()
 	 .then(() => {
 			dispatch({
 				type: INCREMENT
@@ -95,7 +89,7 @@ export const decrementAsync = () => {
       type: DECREMENT_REQUESTED
     })
 
-    return promiseOnTimer()
+    return api.promiseOnTimer()
 	.then(() => {
       dispatch({
         type: DECREMENT

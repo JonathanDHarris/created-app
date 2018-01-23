@@ -1,13 +1,26 @@
 import reducer, { increment, incrementAsync, INCREMENT, INCREMENT_REQUESTED } from './counter.js'
 
-	const incrementRequestedAction = {
-		type: INCREMENT_REQUESTED
+jest.mock('../api', () => {
+	return {
+		promiseOnTimer: jest.fn(() => {
+			return new Promise((resolve) => { 
+				setTimeout(resolve, 1)
+			})
+		})
 	}
+	return {
+		promiseOnTimer: jest.fn(mockPromiseOnATimer)
+	}
+})
 
-	
-	const incrementAction = {
-		type: INCREMENT
-	}
+const incrementRequestedAction = {
+	type: INCREMENT_REQUESTED
+}
+
+
+const incrementAction = {
+	type: INCREMENT
+}
 	
 test('Increment dispatches with INCREMENT_REQUESTED and then INCREMENT', () => {
 	const mockDispatch = jest.fn()

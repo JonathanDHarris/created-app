@@ -1,15 +1,20 @@
 import reducer, { increment, incrementAsync, INCREMENT, INCREMENT_REQUESTED } from './counter.js'
 
-jest.mock('../api', () => {
-	const mockPromiseOnATimer = () => {
-		return new Promise((resolve) => { 
-			setTimeout(resolve, 1)
-		})
-	}
-	return {
-		promiseOnTimer: jest.fn(mockPromiseOnATimer)
-	}
-})
+/*
+ * Note that the import for '../api' in counter.js is replaced with a mocked version by jest.
+ * This is done using the moduleNameMapper property for jest in package.json
+ * Here is an alternative way to mock an import for an individual test file:
+	jest.mock('../api', () => {
+		const mockPromiseOnATimer = () => {
+			return new Promise((resolve) => { 
+				setTimeout(resolve, 1)
+			})
+		}
+		return {
+			promiseOnTimer: jest.fn(mockPromiseOnATimer)
+		}
+	})
+*/
 
 const incrementRequestedAction = {
 	type: INCREMENT_REQUESTED

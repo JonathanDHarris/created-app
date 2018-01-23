@@ -78,7 +78,8 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+	  "../api": "<rootDir>/src/mockApi/index.js"
     },
     "moduleFileExtensions": [
       "web.js",
